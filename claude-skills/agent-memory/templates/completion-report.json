@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Completion Report",
+  "type": "object",
+  "required": ["od", "task", "outcome", "summary", "timestamp"],
+  "properties": {
+    "od": {
+      "type": "string",
+      "description": "OD/worker identifier"
+    },
+    "task": {
+      "type": "string",
+      "description": "Task name/slug"
+    },
+    "outcome": {
+      "type": "string",
+      "enum": ["success", "partway", "blocked"],
+      "description": "Task outcome"
+    },
+    "summary": {
+      "type": "string",
+      "description": "One-line summary of what happened"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp"
+    },
+    "files_modified": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "List of files changed"
+    },
+    "diff": {
+      "type": "string",
+      "description": "Diff/PR identifier"
+    },
+    "discoveries": {
+      "type": "string",
+      "description": "Things learned during the task"
+    },
+    "failed_approaches": {
+      "type": "string",
+      "description": "Approaches that did not work"
+    },
+    "next_steps": {
+      "type": "string",
+      "description": "What should happen next"
+    },
+    "sequence": {
+      "type": "integer",
+      "description": "Auto-incremented sequence number for this worker+task"
+    }
+  }
+}
